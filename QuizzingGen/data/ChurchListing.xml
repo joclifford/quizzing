@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<churches>
+    <church id="35e3ec33-eb5d-42f1-98e4-52e9ca5fd247" name="EVAC">
+        <team id="2162c24c-942b-4dcb-8114-9f17127a3bad" name="Erin Village 1" coach="Jon" rating="1"/>
+        <team id="bbdbb025-ccde-476e-8bc9-f4da7b53be42" name="Erin Village 2" coach="Cindy" rating="1"/>
+        <team id="9d8489d7-4360-4e79-a30d-ab25f3c2a251" name="Erin Village 3" coach="Carla" rating="1"/>
+    </church>
+    <church id="060a2dc4-7c1e-4188-9497-3931c830bd28" name="Gengate">
+        <team id="6b229bcb-de0c-43f5-befd-862eb3381db3" name="Glengate 1" coach="Noob" rating="1"/>
+        <team id="cf799261-437d-4d5c-a383-3cd492584b6b" name="Glengate 2" coach="Another person" rating="1"/>
+    </church>
+    <church id="d2ca6b0e-b4fd-44db-a00c-fe4eef97437d" name="Burlington">
+        <team id="41a73617-db5b-4207-9c6c-0785a41b37ea" name="Burlington 1" coach="Jack" rating="1"/>
+        <team id="c6111df6-aed9-466d-8129-e7450a1e3cd0" name="Burlington 2" coach="Sally" rating="1"/>
+        <team id="6caa274f-2f88-4535-a877-1cb9c38fd97a" name="Burlington 3" coach="Coach" rating="1"/>
+    </church>
+    <church id="9c0575d7-c134-4190-ada7-92aa7f087033" name="Carmel">
+        <team id="53366cd4-739a-439d-ac81-1eb65a18e52c" name="Carmel 1" coach="Coach" rating="4"/>
+        <team id="ee12fc30-94b2-43e6-ad3a-3dba89ea04b6" name="Carmel 2" coach="coach" rating="1"/>
+        <team id="63be1031-3d58-4c48-b58d-e6c7b8c1152e" name="Carmel 3" coach="coach" rating="1"/>
+        <team id="40e1e7f0-178a-4a82-a45f-6143d660109a" name="Carmel 4" coach="coach" rating="1"/>
+    </church>
+    <church id="94271b16-a849-4ede-8646-3972f307cba7" name="Gateway">
+        <team id="6ee742f2-53cd-48d8-96f5-2a9a3b193695" name="Gateway" coach="coach" rating="1"/>
+    </church>
+    <church id="5c31e833-4ece-4429-a7c9-428831aff33b" name="Gregory Drive">
+        <team id="5a2a634e-42c6-4705-a61b-7857e96293f7" name="Gregory Drive 1 " coach="coach" rating="1"/>
+        <team id="4adcb9e2-5e94-4ab0-b824-4804eddd8416" name="Gregory Drive 2" coach="coach" rating="1"/>
+        <team id="2984fb7f-e238-4585-a711-469183ab84d3" name="Gregory Drive 3" coach="coach" rating="1"/>
+        <team id="33ea1300-0475-4599-972e-1ee9107edb2c" name="Gregory Drive 4" coach=" coach" rating="1"/>
+        <team id="7daeeef5-6069-4ea6-9625-b6b64ffa693a" name="Gregory Drive 5" coach="coach" rating="1"/>
+        <team id="153cf78d-3c3b-47cd-a861-b15a1c99bec2" name="Gregory Drive 6" coach="coach" rating="1"/>
+    </church>
+    <church id="f6f25fed-234e-40e6-a510-93cb46182e05" name="Hazelgen">
+        <team id="40493e1f-4d2d-4c92-aa68-2bc5ea3cf770" name="Hazelgen 1" coach="coach" rating="1"/>
+        <team id="6dedd394-deb0-45d4-905d-6b01f66ddf41" name="Hazelgen 2" coach="coach" rating="1"/>
+    </church>
+    <church id="ce91ea1f-a779-468c-812e-7036d0d12fa9" name="Huntsville">
+        <team id="e5d76347-7926-42b8-8c8f-ce2fea0dd2d5" name="Huntsville" coach="coach" rating="1"/>
+    </church>
+    <church id="3b8db44f-6452-401e-9598-dbe0e64b20d0" name="Mississauga">
+        <team id="4227f0f8-7e50-4594-81fc-5182cd38a995" name="Mississauga 1" coach=" coach" rating="1"/>
+        <team id="249acf37-f09d-4a22-98e6-aba4a8195478" name="Mississauga 2" coach="coach" rating="1"/>
+        <team id="f6c5b7bc-1820-49bb-ba7c-f7c92555f34a" name="Mississauga 3 " coach="coach" rating="1"/>
+        <team id="f21184bf-2c33-4bc5-a398-b0a9b951e0e7" name="Mississauga 4" coach="coach" rating="1"/>
+    </church>
+    <church id="70edcf4a-13b7-4eed-8a16-d5fc34db5e55" name="Sheridan Park">
+        <team id="86f09833-03d0-4f44-b50f-e43df3debfbb" name="Sheridan Park 1" coach="coach" rating="1"/>
+        <team id="1a01fcf9-5650-46d8-bc78-78315da9d24e" name="Sheridan Park 2" coach="coach" rating="1"/>
+        <team id="7acffe38-9ed4-4092-97ed-13ddb7e1b0a9" name="Sheridan Park 3" coach="coach" rating="1"/>
+    </church>
+    <church id="e69722b7-c129-4a7c-8fc0-7aa214d021da" name="Tillsonburg">
+        <team id="b457d4be-41e7-4624-be56-89ace0b3fe37" name="Tillsonburg 1" coach="coach" rating="1"/>
+        <team id="0d0c39e6-f45e-49fe-aeeb-112e63ce7d11" name="Tillsonburg 2" coach="coach" rating="1"/>
+        <team id="b6eec59d-b454-4541-9f86-33fe58826220" name="Tillsonburg 3" coach="coach" rating="1"/>
+    </church>
+    <church id="374d72cd-dba6-49a9-bf2c-6ff2143dd92c" name="West London">
+        <team id="15cc858d-7327-49fb-b273-acd40362fd2b" name="West London 1" coach="coach" rating="1"/>
+        <team id="ad9c5da6-3a82-4f36-8683-6cf32a917751" name="West London 2" coach="coach" rating="1"/>
+        <team id="b25e87f7-d168-4b2e-8009-52f01ce2adda" name="West London 3" coach="coach" rating="1"/>
+        <team id="f0b37c4c-41d0-4477-a91d-e7793c83c2a7" name="West London 4" coach="coach" rating="1"/>
+    </church>
+    <church id="a892e81d-c63c-42b8-beca-02b6473ed335" name="Bramalae">
+        <team id="fb83e310-a5c4-4781-9878-61f1a386ac5b" name="Bramalea" coach="coach" rating="1"/>
+    </church>
+</churches>

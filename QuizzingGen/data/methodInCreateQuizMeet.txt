@@ -1,0 +1,54 @@
+//MINIMAL DUPS BUT SOME QUIZZES WITH ONLY ONE TEAM		
+
+		// Team team1 = new Team();
+					// boolean team1Set = false;
+					// Team team2 = new Team();
+					// boolean team2Set = false;
+					// Team team3 = new Team();
+					// boolean team3Set = false;
+					//
+					// team1 = new Team();
+					// team2 = new Team();
+					// team3 = new Team();
+					// team1Set = false;
+					// team2Set = false;
+					// team3Set = false;
+					// for (Team team : teams) {
+					// boolean inLastSlot = inSlot(lastSlot, team.getName());
+					// if (inLastSlot && backToBacks.contains(team.getName())) {
+					// continue;
+					// }
+					//
+					// if (!inSlot(slot, team.getName())) {
+					// if (!team1Set) {
+					// if (!doneQuizzing(count, team, 3)) {
+					// team1 = team;
+					// team1Set = true;
+					// }
+					// } else if (!team2Set) {
+					// if (!hasQuizzed(matches, team.getName(), team1.getName())
+					// && !doneQuizzing(count, team, 3) && stillQuizzes(count,
+					// teams, matches, team1, team, null)) {
+					// team2 = team;
+					// team2Set = true;
+					// }
+					// } else if (!team3Set) {
+					// if (!hasQuizzed(matches, team.getName(), team1.getName())
+					// && !hasQuizzed(matches, team.getName(), team2.getName())
+					// && !doneQuizzing(count, team, 3) && stillQuizzes(count,
+					// teams, matches, team1, team2, team)) {
+					// team3 = team;
+					// team3Set = true;
+					// }
+					// }
+					// }
+					// // if (inLastSlot) {
+					// // backToBacks.add(team.getName());
+					// // }
+					// }
+
+					// quiz.setTeam1(team1.getName());
+					// quiz.setTeam2(team2.getName());
+					// quiz.setTeam3(team3.getName());
+					//
+					// updateCount(count, team1, team2, team3);

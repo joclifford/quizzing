@@ -1,0 +1,40 @@
+//		    $('.layout_block').resizable({
+//		        grid: [grid_size + (grid_margin * 2), grid_size + (grid_margin * 2)],
+//		        animate: false,
+//		        minWidth: grid_size,
+//		        minHeight: grid_size,
+//		        containment: '#layouts_grid div',
+//		        autoHide: true,
+//		        stop: function(event, ui) {
+//		            var resized = $(this);
+//		            setTimeout(function() {
+//		                self.resizeBlock(resized,grid_size,grid_margin);
+//		            }, 300);
+//		        }
+//		    });
+//
+//		    $('.ui-resizable-handle').hover(function() {
+//		    	o.grid.disable();
+//		    }, function() {
+//		    	o.grid.enable();
+//		    });
+
+		
+	     resizeBlock : function(elmObj, grid_size, grid_margin) {
+				var self = this;
+				var o = self.options;
+	    	 
+	        var elmObj = $(elmObj);
+	        var w = elmObj.width() - grid_size;
+	        var h = elmObj.height() - grid_size;
+
+	        for (var grid_w = 1; w > 0; w -= (grid_size + (grid_margin * 2))) {
+	            grid_w++;
+	        }
+
+	        for (var grid_h = 1; h > 0; h -= (grid_size + (grid_margin * 2))) {
+	            grid_h++;
+	        }
+	        console.log(grid_w + ',' + grid_h);
+	        o.grid.resize_widget(elmObj, grid_w, grid_h);
+	    },

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="churches">
+		<xs:complexType>
+			<xs:sequence minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="church" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="church">
+		<xs:complexType>
+			<xs:sequence minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="team" />
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:string" use="optional" />
+			<xs:attribute name="name" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="team">
+		<xs:complexType>
+			<xs:sequence minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="quizzer" />
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:string" use="optional" />
+			<xs:attribute name="name" type="xs:string" use="required" />
+			<xs:attribute name="coach" type="xs:string" use="required" />
+			<xs:attribute name="rating" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="quizzer">
+		<xs:complexType>
+			<xs:attribute name="id" type="xs:string" use="optional" />
+			<xs:attribute name="name" type="xs:string" use="required" />
+			<xs:attribute name="caption" type="xs:boolean" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+
+
+
+
+
+
+
+
+
+
+	<xs:element name="schedules">
+		<xs:complexType>
+			<xs:sequence minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="schedule" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+
+	<xs:element name="schedule">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="quizMeet" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+
+			<xs:attribute name="dateGenerated" type="xs:date" use="optional" />
+			<xs:attribute name="morningStart" type="xs:date" use="optional"></xs:attribute>
+			<xs:attribute name="afternoonStart" type="xs:date" use="optional"></xs:attribute>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="quizMeet">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="slot" minOccurs="0" maxOccurs="unbounded" />
+				<xs:element ref="meet" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+
+			<xs:attribute name="id" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+
+	<xs:element name="slot">
+		<xs:complexType>
+			<xs:sequence minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="quiz" />
+			</xs:sequence>
+			<xs:attribute name="start" type="xs:string" use="required" />
+			<xs:attribute name="end" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="quiz">
+		<xs:complexType>
+			<xs:attribute name="team1" type="xs:string" use="required" />
+			<xs:attribute name="team2" type="xs:string" use="required" />
+			<xs:attribute name="team3" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+
+
+
+
+
+
+
+
+
+
+	<xs:element name="meets">
+		<xs:complexType>
+			<xs:sequence minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="meet" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="meet">
+		<xs:complexType>
+			<xs:sequence minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="room" />
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:string" use="optional" />
+			<xs:attribute name="location" type="xs:string" use="required" />
+			<xs:attribute name="date" type="xs:string" use="required" />
+			<xs:attribute name="start" type="xs:string" use="required" />
+			<xs:attribute name="end" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="room">
+		<xs:complexType>
+			<xs:attribute name="id" type="xs:string" use="optional" />
+			<xs:attribute name="name" type="xs:string" use="required" />
+			<xs:attribute name="quizmasters" type="xs:string" use="required" />
+			<xs:attribute name="skipSlot" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

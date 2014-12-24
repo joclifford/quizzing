@@ -1,0 +1,39 @@
+						while (team1.getId() == null || team2.getId() == null || team3.getId() == null) {
+							if (team1.getId() == null) {
+								team1 = getRandomTeam(teams);
+							}
+
+							if (team2.getId() == null) {
+								for (Team t2 : teamList) {
+									if (!t2.getId().equals(team1.getId()) && !hasQuizzed(matches, team1, t2)) {
+										team2 = t2;
+										break;
+
+									}
+								}
+							} else if (hasQuizzed(matches, team1, team2) || team2.getId().equals(team1.getId())) {
+								team2 = getRandomTeam(teams);
+							}
+
+							// need to re-think some logic for team 3, maybe a
+							// while loop in the else if statements
+							for (Team t3 : teamList) {
+								team3 = t3;
+								if (hasQuizzed(matches, team1, t3)) {
+									team1 = getRandomTeam(teams);
+									while ((sameTeams(team1, team2, team3) || !hasQuizzed(matches, team1, team2)) || !hasQuizzed(matches, team1, team3)) {
+										team1 = getRandomTeam(teams);
+									}
+									team3 = t3;
+
+								} else if (hasQuizzed(matches, team2, t3)) {
+									team2 = getRandomTeam(teams);
+									while (sameTeams(team1, team2, team3) || !hasQuizzed(matches, team2, team1) || !hasQuizzed(matches, team2, team3)) {
+										team2 = getRandomTeam(teams);
+									}
+									team3 = t3;
+								} else {
+									break;
+								}
+							}
+						}

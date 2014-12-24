@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<meets>
+    <meet id="1" location="West London" date="Nov 1 2014" start="10:00" end="15:30">
+        <room id="12111188-2911-4e51-8c9b-42fa552f1e38" name="Room A " quizmasters="Jon, Casey"/>
+        <room id="22bea3f1-8674-4347-917f-68af31355fec" name="Room B" quizmasters="Josh, Paul"/>
+        <room id="1af18c36-3e96-477a-ac0a-5334aaa32dad" name="Room C" quizmasters="Jes, Dave, Emma"/>
+        <room id="01199cac-6f25-45d9-ab5d-e2e249fdcfbb" name="Room D" quizmasters="Emily, Mike"/>
+        <room id="d9759b81-259b-47ab-804d-100c2713268c" name="Room E" quizmasters="Frank, Julia"/>
+        <room id="073116a8-5654-45f0-b932-fe9e8379eb86" name="Room F" quizmasters="Daryl, Jack"/>
+    </meet>
+    <meet id="2" location="Mississauga" date="Jan 10 2015" start="10:00" end="15:30">
+        <room id="dd9c1942-e681-4db1-842c-7534aa70a2ce" name="Room A " quizmasters="QuizMaters"/>
+        <room id="6af5e919-4799-4d5b-8d63-d8812e298393" name="Room B " quizmasters="QuizMaters"/>
+        <room id="07da48dd-24da-4e8b-bf80-f4364c80b980" name="Room C" quizmasters="QuizMaters"/>
+        <room id="eadfa967-395c-48b6-8670-f5d4668e0f71" name="Room D" quizmasters="QuizMaters"/>
+        <room id="a41d63cc-34fa-4795-b154-621fd0b374ca" name="Room E" quizmasters="QuizMaters"/>
+        <room id="7a298a3d-fed0-451d-ac3a-67dbd2748951" name="Room F" quizmasters="QuizMaters"/>
+    </meet>
+    <meet id="3" location="Mississauga" date="Mar 7th" start="10:00" end="15:30">
+        <room id="4da942fe-f52f-47fb-ab4c-193c566aed50" name="Room A" quizmasters="Jill, Jack"/>
+        <room id="8d6afbe8-02d2-4824-b780-0bed4fdc7822" name="Room B" quizmasters="Jack, Jill"/>
+        <room id="0c483e06-f920-4e8a-82c6-9740847a5e74" name="Room C" quizmasters="Julian, Pat"/>
+        <room id="9e53f8ee-2079-45cc-a39d-6d9b1a441c8a" name="Room D" quizmasters="Gold, Fish"/>
+        <room id="68198bc2-8c76-4e65-9cf9-f5d5886dddf2" name="Room E" quizmasters="Hoard, SHore"/>
+        <room id="30060ee6-7ff5-4745-9bb5-360a3fd14833" name="Room F" quizmasters="Taylor, Swift"/>
+    </meet>
+    <meet id="4" location="Muskoka (Friday)" date="May 8th" start="10:30" end="16:00">
+        <room id="d1f43254-ac6b-4385-b90d-e372e6abfbe3" name="Room A " quizmasters="Water, Bottle"/>
+        <room id="579fd1ce-0f06-4a78-9a84-006fb7c33424" name="Room B" quizmasters="Visa, Card"/>
+        <room id="48a79bc3-e4eb-48c3-b8f5-80ef5e75f2ae" name="Room C" quizmasters="Mike, Emily"/>
+        <room id="927bd132-59d1-4f0f-8554-6b7ea4ed21b5" name="Room D" quizmasters="Casey, Bailey"/>
+        <room id="6d2fdd33-f9fe-4c31-b507-d3b18e5c3fda" name="Room E" quizmasters="Kyle, Maddie"/>
+        <room id="65fbe039-bcd6-4526-8db2-69db3c53eddd" name="Room F" quizmasters="Screw, Driver"/>
+    </meet>
+</meets>
