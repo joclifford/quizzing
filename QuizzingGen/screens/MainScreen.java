@@ -1019,12 +1019,7 @@ public class MainScreen {
 				// UPDATING///////////////////////////////////////////
 				if (start.toString().substring(0, 5).equals("12:20")) {
 					start.add(hour);
-					boolean allGood = true;
-					for (Integer num : count.values()) {
-						if (num < 3) {
-							allGood = false;
-						}
-					}
+					boolean allGood = checkCount(count);
 					statusMsg.append("Morning: " + (allGood ? "Good" : "Bad"));
 
 					// RESET QUIZZING
@@ -1042,6 +1037,10 @@ public class MainScreen {
 				// slot////////////////////////////////
 
 				for (int j = 0; j < meet.getRoom().size(); j++) {
+					if ((i == 0 && j == 0)) {
+						slot.getQuiz().add(new Quiz());
+						continue;
+					}
 
 					Quiz quiz = getQuiz(count, matches, teamsToQuiz);
 					while (quiz == null || quiz.getTeam1() == null || quiz.getTeam2() == null || quiz.getTeam3() == null || inSlot(slot, getTeam(quiz.getTeam1()).getName(), getTeam(quiz.getTeam2()).getName(), getTeam(quiz.getTeam3()).getName())) {
@@ -1049,32 +1048,6 @@ public class MainScreen {
 							break;
 						}
 						quiz = getQuiz(count, matches, teamsToQuiz);
-						if (false) {
-							if (inSlot(lastSlot, quiz)) {
-								if (backToBacks.contains(quiz.getTeam1())) {
-									quiz = null;
-									continue;
-								}
-								if (backToBacks.contains(quiz.getTeam2())) {
-									quiz = null;
-									continue;
-								}
-								if (backToBacks.contains(quiz.getTeam3())) {
-									quiz = null;
-									continue;
-								}
-
-								if (inSlot(lastSlot, getTeam(quiz.getTeam1()).getName())) {
-									backToBacks.add(quiz.getTeam1());
-								}
-								if (inSlot(lastSlot, getTeam(quiz.getTeam2()).getName())) {
-									backToBacks.add(quiz.getTeam2());
-								}
-								if (inSlot(lastSlot, getTeam(quiz.getTeam3()).getName())) {
-									backToBacks.add(quiz.getTeam3());
-								}
-							}
-						}
 						refillTeamsIfNeeded(matches, count, teams, teamsToQuiz);
 					}
 
@@ -1103,16 +1076,21 @@ public class MainScreen {
 			e.printStackTrace();
 		}
 
+		boolean allGood = checkCount(count);
+		statusMsg.append(" Afternoon: " + (allGood ? "Good" : "Bad"));
+		Date date = new Date();
+		lblStatus.setText(meet.getLocation() + "-" + meet.getDate() + " " + statusMsg.toString() + " " + date.toString());
+		return qMeet;
+	}
+
+	private boolean checkCount(HashMap<String, Integer> count) {
 		boolean allGood = true;
 		for (Integer i : count.values()) {
 			if (i < 3) {
 				allGood = false;
 			}
 		}
-		statusMsg.append(" Afternoon: " + (allGood ? "Good" : "Bad"));
-		Date date = new Date();
-		lblStatus.setText(meet.getLocation() + "-" + meet.getDate() + " " + statusMsg.toString() + " " + date.toString());
-		return qMeet;
+		return allGood;
 	}
 
 	private boolean refillTeamsIfNeeded(Set<String> matches, HashMap<String, Integer> count, ArrayList<Team> teams, ArrayList<Team> teamsToQuiz) {
