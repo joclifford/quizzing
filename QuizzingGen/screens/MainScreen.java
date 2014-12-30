@@ -412,21 +412,21 @@ public class MainScreen {
 							if (inSlot(qm.getSlot().get(i - 1), quiz.getTeam1(), quiz.getTeam2(), quiz.getTeam3())) {
 								backToBackCount++;
 								if (inSlot(qm.getSlot().get(i - 1), quiz.getTeam1())) {
-									if (backToBacks.contains(quiz.getTeam1())){
+									if (backToBacks.contains(quiz.getTeam1())) {
 										teamsWithTwo++;
 									} else {
 										backToBacks.add(quiz.getTeam1());
 									}
 								}
 								if (inSlot(qm.getSlot().get(i - 1), quiz.getTeam2())) {
-									if (backToBacks.contains(quiz.getTeam2())){
+									if (backToBacks.contains(quiz.getTeam2())) {
 										teamsWithTwo++;
 									} else {
 										backToBacks.add(quiz.getTeam2());
 									}
 								}
 								if (inSlot(qm.getSlot().get(i - 1), quiz.getTeam3())) {
-									if (backToBacks.contains(quiz.getTeam3())){
+									if (backToBacks.contains(quiz.getTeam3())) {
 										teamsWithTwo++;
 									} else {
 										backToBacks.add(quiz.getTeam3());
@@ -966,6 +966,8 @@ public class MainScreen {
 		QuizMeet qMeet = new QuizMeet();
 		qMeet = new QuizMeet();
 		HashMap<String, Integer> count = new HashMap<String, Integer>();
+		List<Slot> morningQuizzing = new ArrayList<Slot>();
+		List<Slot> afternoonQuizzing = new ArrayList<Slot>();
 		try {
 
 			for (TeamHelper t : teamValues.values()) {
@@ -1009,11 +1011,6 @@ public class MainScreen {
 				refillTeamsIfNeeded(matches, count, teams, teamsToQuiz);
 
 				Slot slot = new Slot();
-				Slot lastSlot = new Slot();
-
-				if (i > 0) {
-					lastSlot = qMeet.getSlot().get(i - 1);
-				}
 
 				// /////////TIME
 				// UPDATING///////////////////////////////////////////
@@ -1070,11 +1067,18 @@ public class MainScreen {
 					}
 				}
 
-				qMeet.getSlot().add(slot);
+				if (morning) {
+					morningQuizzing.add(slot);
+				} else {
+					afternoonQuizzing.add(slot);
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+		qMeet.getSlot().addAll(morningQuizzing);
+		qMeet.getSlot().addAll(afternoonQuizzing);
 
 		boolean allGood = checkCount(count);
 		statusMsg.append(" Afternoon: " + (allGood ? "Good" : "Bad"));
@@ -1100,6 +1104,17 @@ public class MainScreen {
 			return true;
 		}
 		return false;
+	}
+
+	private void sortSlots(List<Slot> slots, int roomSize) {
+		// Assuming that the first slot in the morning and the last slot in the
+		// afternoon is blank we don't need to organize that column. Therefore, start at 1.
+		
+		for (int i = 1; i < slots.size(); i++){
+			for (int j = 1; j<slots.get(i).getQuiz().size(); j++){
+				
+			}
+		}
 	}
 
 	private boolean validateMeet(QuizMeet meet) {
