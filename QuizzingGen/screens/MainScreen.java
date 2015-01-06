@@ -1,6 +1,8 @@
 package screens;
 
+import helpers.Match;
 import helpers.MeetHelper;
+import helpers.Possibilities;
 import helpers.RoomHelper;
 import helpers.TeamHelper;
 
@@ -1004,7 +1006,7 @@ public class MainScreen {
 
 	// New and hopefully improved version
 	public QuizMeet generateQuizMeet(Meet meet, Set<String> matches) {
-		///matches.clear();
+		// /matches.clear();
 		StringBuilder statusMsg = new StringBuilder();
 		QuizMeet qMeet = new QuizMeet();
 		qMeet = new QuizMeet();
@@ -1025,6 +1027,8 @@ public class MainScreen {
 					teams.add(helper.getTeamObject());
 				}
 			}
+			getAllPossibleQuizzes(teams, matches);
+
 			Collections.shuffle(teams);
 			qMeet.getMeet().add(meet);
 			GregorianCalendar startCalendar = new GregorianCalendar();
@@ -1406,17 +1410,19 @@ public class MainScreen {
 			return null;
 		} else {
 			for (Team team : ts) {
-//				if (eliminatesTeamOptions(count, team, null, null, matches)) {
-//					continue;
-//				}
+				// if (eliminatesTeamOptions(count, team, null, null, matches))
+				// {
+				// continue;
+				// }
 				Quiz q = new Quiz();
 
 				Team team2 = new Team();
 
 				for (Team t : ts) {
-//					if (eliminatesTeamOptions(count, t, team, null, matches)) {
-//						continue;
-//					}
+					// if (eliminatesTeamOptions(count, t, team, null, matches))
+					// {
+					// continue;
+					// }
 					if (!hasQuizzed(matches, team, t) && !sameTwoTeams(team, t)) {
 						team2 = t;
 					}
@@ -1424,9 +1430,10 @@ public class MainScreen {
 
 				Team team3 = new Team();
 				for (Team t : ts) {
-//					if (eliminatesTeamOptions(count, t, team, team2, matches)) {
-//						continue;
-//					}
+					// if (eliminatesTeamOptions(count, t, team, team2,
+					// matches)) {
+					// continue;
+					// }
 					if (!hasQuizzed(matches, team, t) && !hasQuizzed(matches, team2, t) && !sameThreeTeams(team, team2, t)) {
 						team3 = t;
 					}
@@ -1961,5 +1968,41 @@ public class MainScreen {
 			}
 		}
 		return null;
+	}
+
+	public List<Quiz> getAllPossibleQuizzes(List<Team> teams, Set<String> matches) {
+		List<Quiz> quizzes = new ArrayList<Quiz>();
+
+		Possibilities.setTeamCount(teams.size());
+		Possibilities p = new Possibilities();
+		p.findPossibilities();
+		List<Match> genMatches = p.getMatches();
+		for (Match m : genMatches) {
+			Quiz quiz = new Quiz();
+			for (int i = 0; i < m.getTeams().size(); i++) {
+				if (i == 0) {
+					quiz.setTeam1(teams.get(m.getTeams().get(i) - 1).getName());
+				}
+				if (i == 1) {
+					quiz.setTeam2(teams.get(m.getTeams().get(i) - 1).getName());
+				}
+				if (i == 2) {
+					quiz.setTeam3(teams.get(m.getTeams().get(i) - 1).getName());
+				}
+			}
+			quizzes.add(quiz);
+		}
+
+		Iterator<Quiz> itr = quizzes.iterator();
+
+		while (itr.hasNext()) {
+			Quiz quiz = itr.next();
+			swapIdWithNames(quiz);
+			if (hasQuizzed(matches, quiz.getTeam1(), quiz.getTeam2()) || hasQuizzed(matches, quiz.getTeam1(), quiz.getTeam2()) || hasQuizzed(matches, quiz.getTeam2(), quiz.getTeam2())) {
+				itr.remove();
+			}
+		}
+
+		return quizzes;
 	}
 }
