@@ -31,9 +31,9 @@
         <team id="7daeeef5-6069-4ea6-9625-b6b64ffa693a" name="Gregory Drive 5" coach="coach" rating="1"/>
         <team id="153cf78d-3c3b-47cd-a861-b15a1c99bec2" name="Gregory Drive 6" coach="coach" rating="1"/>
     </church>
-    <church id="f6f25fed-234e-40e6-a510-93cb46182e05" name="Hazelgen">
-        <team id="40493e1f-4d2d-4c92-aa68-2bc5ea3cf770" name="Hazelgen 1" coach="coach" rating="1"/>
-        <team id="6dedd394-deb0-45d4-905d-6b01f66ddf41" name="Hazelgen 2" coach="coach" rating="1"/>
+    <church id="f6f25fed-234e-40e6-a510-93cb46182e05" name="Hazelglen">
+        <team id="40493e1f-4d2d-4c92-aa68-2bc5ea3cf770" name="Hazelglen 1" coach="coach" rating="1"/>
+        <team id="6dedd394-deb0-45d4-905d-6b01f66ddf41" name="Hazelglen 2" coach="coach" rating="1"/>
     </church>
     <church id="ce91ea1f-a779-468c-812e-7036d0d12fa9" name="Huntsville">
         <team id="e5d76347-7926-42b8-8c8f-ce2fea0dd2d5" name="Huntsville" coach="coach" rating="1"/>
@@ -41,7 +41,7 @@
     <church id="3b8db44f-6452-401e-9598-dbe0e64b20d0" name="Mississauga">
         <team id="4227f0f8-7e50-4594-81fc-5182cd38a995" name="Mississauga 1" coach=" coach" rating="1"/>
         <team id="249acf37-f09d-4a22-98e6-aba4a8195478" name="Mississauga 2" coach="coach" rating="1"/>
-        <team id="f6c5b7bc-1820-49bb-ba7c-f7c92555f34a" name="Mississauga 3 " coach="coach" rating="1"/>
+        <team id="f6c5b7bc-1820-49bb-ba7c-f7c92555f34a" name="Mississauga 3" coach="coach" rating="1"/>
         <team id="f21184bf-2c33-4bc5-a398-b0a9b951e0e7" name="Mississauga 4" coach="coach" rating="1"/>
     </church>
     <church id="70edcf4a-13b7-4eed-8a16-d5fc34db5e55" name="Sheridan Park">
