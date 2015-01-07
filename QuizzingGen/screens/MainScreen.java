@@ -894,7 +894,7 @@ public class MainScreen {
 			int slots = (int) Math.ceil((totalHours * 60.00) / interval);
 
 			XMLGregorianCalendar start = XMLGregorianCalendarImpl.createTime(Integer.parseInt(meet.getStart().substring(0, meet.getStart().indexOf(":"))), Integer.parseInt(meet.getStart().substring(meet.getStart().indexOf(":") + 1, meet.getStart().length())), 0, 0);
-
+			
 			long intervalInMilli = (20 * 60) * 1000;
 			long hourInMilli = (60 * 60) * 1000;
 			Duration twentyMin = DatatypeFactory.newInstance().newDuration(intervalInMilli);
@@ -2061,7 +2061,7 @@ public class MainScreen {
 					morningQuizzing.add(qm.getSlot().get(i));
 				}
 				sortSlots(morningQuizzing, 6);
-				for (int i = 6; i < 14; i++) {
+				for (int i = 7; i < 14; i++) {
 					afternoonQuizzing.add(qm.getSlot().get(i));
 				}
 				sortSlots(afternoonQuizzing, 6);
@@ -2077,79 +2077,67 @@ public class MainScreen {
 
 		// trips in the morning
 		HashMap<Team, List<String>> trips = new HashMap<Team, List<String>>();
-		for (Team team : teams) {
-			for (int i = 2; i < morningQuizzing.size(); i++) {
-				if (inSlot(morningQuizzing.get(i), team.getName())) {
-					if (inSlot(morningQuizzing.get(i - 1), team.getName())) {
-						if (inSlot(morningQuizzing.get(i - 2), team.getName())) {
-							List<String> slots = new ArrayList<String>();
-							for (int l = 0; l < morningQuizzing.get(i).getQuiz().size(); l++) {
-								if (morningQuizzing.get(i).getQuiz().get(l).getTeam1() == null)
-									continue;
-								if (morningQuizzing.get(i).getQuiz().get(l).getTeam1().equals(team.getName()) || morningQuizzing.get(i).getQuiz().get(l).getTeam2().equals(team.getName()) || morningQuizzing.get(i).getQuiz().get(l).getTeam3().equals(team.getName())) {
-									slots.add(i + ":" + l);
-								}
-							}
-							for (int l = 0; l < morningQuizzing.get(i - 1).getQuiz().size(); l++) {
-								if (morningQuizzing.get(i - 1).getQuiz().get(l).getTeam1() == null)
-									continue;
-								if (morningQuizzing.get(i - 1).getQuiz().get(l).getTeam1().equals(team.getName()) || morningQuizzing.get(i - 1).getQuiz().get(l).getTeam2().equals(team.getName()) || morningQuizzing.get(i - 1).getQuiz().get(l).getTeam3().equals(team.getName())) {
-									slots.add((i - 1) + ":" + l);
-								}
-							}
-							for (int l = 0; l < morningQuizzing.get(i - 2).getQuiz().size(); l++) {
-								if (morningQuizzing.get(i - 2).getQuiz().get(l).getTeam1() == null)
-									continue;
-								if (morningQuizzing.get(i - 2).getQuiz().get(l).getTeam1().equals(team.getName()) || morningQuizzing.get(i - 2).getQuiz().get(l).getTeam2().equals(team.getName()) || morningQuizzing.get(i - 2).getQuiz().get(l).getTeam3().equals(team.getName())) {
-									slots.add((i - 2) + ":" + l);
-								}
-							}
-							trips.put(team, slots);
-						}
-					}
-				}
-			}
+		identifyTrips(morningQuizzing, teams, trips);
+		
+		HashMap<Team, List<String>> afternoonTrips = new HashMap<Team, List<String>>();
+		identifyTrips(afternoonQuizzing, teams, afternoonTrips);
+		
+		while (trips.size() != 0){
+			sortTriples(morningQuizzing, trips);
+			identifyTrips(morningQuizzing, teams, trips);
 		}
+		while (afternoonTrips.size() != 0){
+			sortTriples(afternoonQuizzing, afternoonTrips);
+			identifyTrips(afternoonQuizzing, teams, afternoonTrips);
+		}
+		checkForRepeatMatches();
+		System.out.println("Optimized");
+		addSchedule(schedules.getSchedule().get(0));
+		return;
+
+	}
+
+	private void sortTriples(List<Slot> quizzing, HashMap<Team, List<String>> trips) {
 		tripLoop:for (Team team : trips.keySet()) {
-			for (int i = 0; i < morningQuizzing.size(); i++) {
-				if (inSlot(morningQuizzing.get(i), team.getName())) {
+			for (int i = 0; i < quizzing.size(); i++) {
+				if (inSlot(quizzing.get(i), team.getName())) {
 					// This is a slot containing a team with a triple quiz
 					int quizNum = 0;
 					Quiz quizToMove = null;
-					for (int k = 0; k < morningQuizzing.get(i).getQuiz().size(); k++) {
-						if (morningQuizzing.get(i).getQuiz().get(k).getTeam1() != null) {
-							if (morningQuizzing.get(i).getQuiz().get(k).getTeam1().equals(team.getName()) || morningQuizzing.get(i).getQuiz().get(k).getTeam2().equals(team.getName()) || morningQuizzing.get(i).getQuiz().get(k).getTeam3().equals(team.getName())) {
+					for (int k = 0; k < quizzing.get(i).getQuiz().size(); k++) {
+						if (quizzing.get(i).getQuiz().get(k).getTeam1() != null) {
+							if (quizzing.get(i).getQuiz().get(k).getTeam1().equals(team.getName()) || quizzing.get(i).getQuiz().get(k).getTeam2().equals(team.getName()) || quizzing.get(i).getQuiz().get(k).getTeam3().equals(team.getName())) {
 								quizNum = k;
-								quizToMove = morningQuizzing.get(i).getQuiz().get(k);
+								quizToMove = quizzing.get(i).getQuiz().get(k);
 							}
 						}
 					}
 
 					// now looking for a slot that this team is not in.
-					for (int j = 0; j < morningQuizzing.size(); j++) {
+					for (int j = 0; j < quizzing.size(); j++) {
 						for (String s : trips.get(team)) {
 							if (s.contains(j + ":"))
 							continue;
 						}
-						if (!inSlot(morningQuizzing.get(j), quizToMove)) {
-							if (morningQuizzing.get(j).getQuiz().size() < 6) {
-								morningQuizzing.get(j).getQuiz().add(quizToMove);
-								morningQuizzing.get(i).getQuiz().remove(quizNum);
+						if (!inSlot(quizzing.get(j), quizToMove)) {
+							if (quizzing.get(j).getQuiz().size() < 6) {
+								quizzing.get(j).getQuiz().add(quizToMove);
+								quizzing.get(i).getQuiz().remove(quizNum);
 								System.out.println("MOVED A QUIZ TO A VACANT SPOT");
 								continue tripLoop;
 							}
 							
-							for (int q = 0; q < morningQuizzing.get(j).getQuiz().size(); q++) {
-								if (morningQuizzing.get(j).getQuiz().get(q).getTeam1() == null)
+							for (int q = 0; q < quizzing.get(j).getQuiz().size(); q++) {
+								if (quizzing.get(j).getQuiz().get(q).getTeam1() == null)
 										continue;
-								if (!inSlot(morningQuizzing.get(i), morningQuizzing.get(j).getQuiz().get(q))) {
+								if (!inSlot(quizzing.get(i), quizzing.get(j).getQuiz().get(q))) {
 									//move trip quiz into new slot
-									morningQuizzing.get(j).getQuiz().add(quizToMove);
-									morningQuizzing.get(i).getQuiz().remove(quizNum);
+									quizzing.get(j).getQuiz().add(quizToMove);
+									quizzing.get(i).getQuiz().remove(quizNum);
 									
 									//move other quiz into trip slot
-									morningQuizzing.get(i).getQuiz().add(morningQuizzing.get(j).getQuiz().get(q));
-									morningQuizzing.get(j).getQuiz().remove(q);
+									quizzing.get(i).getQuiz().add(quizzing.get(j).getQuiz().get(q));
+									quizzing.get(j).getQuiz().remove(q);
 								
 									System.out.println("SWAPPED QUIZZES");
 									continue tripLoop;
@@ -2161,12 +2149,43 @@ public class MainScreen {
 				}
 			}
 		}
+	}
 
-		checkForRepeatMatches();
-		System.out.println("Optimized");
-		addSchedule(schedules.getSchedule().get(0));
-		return;
-
+	private void identifyTrips(List<Slot> quizzes, List<Team> teams, HashMap<Team, List<String>> trips) {
+		trips.clear();
+		for (Team team : teams) {
+			for (int i = 2; i < quizzes.size(); i++) {
+				if (inSlot(quizzes.get(i), team.getName())) {
+					if (inSlot(quizzes.get(i - 1), team.getName())) {
+						if (inSlot(quizzes.get(i - 2), team.getName())) {
+							List<String> slots = new ArrayList<String>();
+							for (int l = 0; l < quizzes.get(i).getQuiz().size(); l++) {
+								if (quizzes.get(i).getQuiz().get(l).getTeam1() == null)
+									continue;
+								if (quizzes.get(i).getQuiz().get(l).getTeam1().equals(team.getName()) || quizzes.get(i).getQuiz().get(l).getTeam2().equals(team.getName()) || quizzes.get(i).getQuiz().get(l).getTeam3().equals(team.getName())) {
+									slots.add(i + ":" + l);
+								}
+							}
+							for (int l = 0; l < quizzes.get(i - 1).getQuiz().size(); l++) {
+								if (quizzes.get(i - 1).getQuiz().get(l).getTeam1() == null)
+									continue;
+								if (quizzes.get(i - 1).getQuiz().get(l).getTeam1().equals(team.getName()) || quizzes.get(i - 1).getQuiz().get(l).getTeam2().equals(team.getName()) || quizzes.get(i - 1).getQuiz().get(l).getTeam3().equals(team.getName())) {
+									slots.add((i - 1) + ":" + l);
+								}
+							}
+							for (int l = 0; l < quizzes.get(i - 2).getQuiz().size(); l++) {
+								if (quizzes.get(i - 2).getQuiz().get(l).getTeam1() == null)
+									continue;
+								if (quizzes.get(i - 2).getQuiz().get(l).getTeam1().equals(team.getName()) || quizzes.get(i - 2).getQuiz().get(l).getTeam2().equals(team.getName()) || quizzes.get(i - 2).getQuiz().get(l).getTeam3().equals(team.getName())) {
+									slots.add((i - 2) + ":" + l);
+								}
+							}
+							trips.put(team, slots);
+						}
+					}
+				}
+			}
+		}
 	}
 
 	private void checkForRepeatMatches() {
