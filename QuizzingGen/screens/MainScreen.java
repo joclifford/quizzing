@@ -237,6 +237,15 @@ public class MainScreen {
 			showStats.setBounds(400, 10, 150, 25);
 			meetPanel.add(showStats);
 
+			JButton optThis = new JButton("Optimize Meet");
+			optThis.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					optimizeMeet(m.getId());
+				}
+			});
+			optThis.setBounds(550, 10, 150, 25);
+			meetPanel.add(optThis);
+
 			meetValues.put(m.getId(), new MeetHelper(m.getId(), locationTxtField, dateTxtField, startSpinner, endSpinner));
 
 			JTabbedPane meetPane = new JTabbedPane(JTabbedPane.TOP);
@@ -799,8 +808,10 @@ public class MainScreen {
 
 		for (Meet meet : meets.getMeet()) {
 			if (meet.getId().equals(id)) {
-				QuizMeet qm = generateQuizMeet(meet, matches); // generateMeet(meet,matches);
-																// //
+				QuizMeet qm = generateMeet(meet, matches); // generateQuizMeet(meet,
+															// matches); //
+															// generateMeet(meet,matches);
+
 				qm.setId(meet.getId());
 				Iterator<QuizMeet> itr = schedules.getSchedule().get(0).getQuizMeet().iterator();
 				int count = 0;
@@ -889,9 +900,10 @@ public class MainScreen {
 			Duration twentyMin = DatatypeFactory.newInstance().newDuration(intervalInMilli);
 			Duration hour = DatatypeFactory.newInstance().newDuration(hourInMilli);
 
-			List<Quiz> section = new ArrayList<Quiz>();
-			section.clear();
-			getNewSection(teams, matches, count, section);
+			List<Slot> alreadyHappened = new ArrayList<Slot>();
+			List<Quiz> quizzes = getAllPossibleQuizzes(teams, matches, alreadyHappened);
+			// section.clear();
+			// getNewSection(teams, matches, count, quizzes);
 			boolean morning = true;
 
 			List<Slot> morningQuizzing = new ArrayList<Slot>();
@@ -922,10 +934,9 @@ public class MainScreen {
 						count.replace(t.getId(), 0);
 					}
 
-					// addLeftoverQuizzes(section, morningQuizzing,
-					// meet.getRoom().size());
-					section.clear();
-					getNewSection(teams, matches, count, section);
+					addLeftoverQuizzes(quizzes, morningQuizzing, meet.getRoom().size());
+					quizzes.clear();
+					quizzes = getAllPossibleQuizzes(teams, matches, morningQuizzing);
 					morning = false;
 
 				}
@@ -945,11 +956,21 @@ public class MainScreen {
 
 					// Leave first quiz open
 					if (!(i == 0 && j == 0)) {
-						Iterator<Quiz> itr = section.iterator();
+						Iterator<Quiz> itr = quizzes.iterator();
 						while (itr.hasNext()) {
 							Quiz q = itr.next();
 							if (!inSlot(slot, getTeam(q.getTeam1()).getName(), getTeam(q.getTeam2()).getName(), getTeam(q.getTeam3()).getName())) {
 								if (inSlot(lastSlot, getTeam(q.getTeam1()).getName(), getTeam(q.getTeam2()).getName(), getTeam(q.getTeam3()).getName())) {
+									// if (doneQuizzing(count,
+									// getTeam(q.getTeam1()), 3))
+									// continue;
+									// if (doneQuizzing(count,
+									// getTeam(q.getTeam2()), 3))
+									// continue;
+									// if (doneQuizzing(count,
+									// getTeam(q.getTeam3()), 3))
+									// continue;
+									//
 									if (backToBacks.contains(getTeam(q.getTeam1()).getName())) {
 										continue;
 									}
@@ -970,10 +991,11 @@ public class MainScreen {
 										backToBacks.add(getTeam(q.getTeam3()).getName());
 									}
 								}
-
 								team1 = getTeam(q.getTeam1());
 								team2 = getTeam(q.getTeam2());
 								team3 = getTeam(q.getTeam3());
+								updateCount(count, team1, team2, team3);
+
 								itr.remove();
 								break;
 							}
@@ -994,8 +1016,7 @@ public class MainScreen {
 
 			}
 			qMeet.getSlot().addAll(morningQuizzing);
-			// addLeftoverQuizzes(section, afternoonQuizzing,
-			// meet.getRoom().size());
+			addLeftoverQuizzes(quizzes, afternoonQuizzing, meet.getRoom().size());
 			qMeet.getSlot().addAll(afternoonQuizzing);
 			return qMeet;
 		} catch (Exception e) {
@@ -1006,7 +1027,7 @@ public class MainScreen {
 
 	// New and hopefully improved version
 	public QuizMeet generateQuizMeet(Meet meet, Set<String> matches) {
-		// /matches.clear();
+		matches.clear();
 		StringBuilder statusMsg = new StringBuilder();
 		QuizMeet qMeet = new QuizMeet();
 		qMeet = new QuizMeet();
@@ -1027,7 +1048,7 @@ public class MainScreen {
 					teams.add(helper.getTeamObject());
 				}
 			}
-			getAllPossibleQuizzes(teams, matches);
+			// getAllPossibleQuizzes(teams, matches);
 
 			Collections.shuffle(teams);
 			qMeet.getMeet().add(meet);
@@ -1209,6 +1230,7 @@ public class MainScreen {
 					if (inSlot(slots.get(i + 1), slots.get(i).getQuiz().get(j))) {
 						if (!inSlot(slots.get(slots.size() - 1), slots.get(i).getQuiz().get(j)) && !inSlot(slots.get(slots.size() - 2), slots.get(i).getQuiz().get(j))) {
 							Quiz quiz = slots.get(i).getQuiz().get(j);
+							System.out.println("Moving quiz :  " + quiz.getTeam1() + ":" + quiz.getTeam2() + ":" + quiz.getTeam3());
 							slots.get(i).getQuiz().remove(j);
 							slots.get(slots.size() - 1).getQuiz().add(quiz);
 							itr.remove();
@@ -1617,6 +1639,19 @@ public class MainScreen {
 		return false;
 	}
 
+	private boolean inSlot(Slot slot, Team team) {
+		for (Quiz s : slot.getQuiz()) {
+			Team t1 = getTeam(s.getTeam1());
+			Team t2 = getTeam(s.getTeam2());
+			Team t3 = getTeam(s.getTeam3());
+
+			if (sameTwoTeams(team, t1) || sameTwoTeams(team, t2) || sameTwoTeams(team, t3)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	private int amountRemaining(HashMap<String, Integer> count, List<Team> teamList) {
 		int amountRemaining = 0;
 
@@ -1970,39 +2005,186 @@ public class MainScreen {
 		return null;
 	}
 
-	public List<Quiz> getAllPossibleQuizzes(List<Team> teams, Set<String> matches) {
+	public List<Quiz> getAllPossibleQuizzes(List<Team> teams, Set<String> matches, List<Slot> alreadyHappened) {
 		List<Quiz> quizzes = new ArrayList<Quiz>();
 
-		Possibilities.setTeamCount(teams.size());
+		// Possibilities.setTeamCount(teams.size());
+		// Possibilities p = new Possibilities();
+		// p.findPossibilities();
+		// List<Match> genMatches = p.getMatches();
+		// for (Match m : genMatches) {
+		// Quiz quiz = new Quiz();
+		// for (int i = 0; i < m.getTeams().size(); i++) {
+		// if (i == 0) {
+		// quiz.setTeam1(teams.get(m.getTeam().get(i) - 1).getName());
+		// }
+		// if (i == 1) {
+		// quiz.setTeam2(teams.get(m.getTeam().get(i) - 1).getName());
+		// }
+		// if (i == 2) {
+		// quiz.setTeam3(teams.get(m.getTeams().get(i) - 1).getName());
+		// }
+		// }
+		// quizzes.add(quiz);
+		// }
+
 		Possibilities p = new Possibilities();
-		p.findPossibilities();
-		List<Match> genMatches = p.getMatches();
-		for (Match m : genMatches) {
-			Quiz quiz = new Quiz();
-			for (int i = 0; i < m.getTeams().size(); i++) {
-				if (i == 0) {
-					quiz.setTeam1(teams.get(m.getTeams().get(i) - 1).getName());
-				}
-				if (i == 1) {
-					quiz.setTeam2(teams.get(m.getTeams().get(i) - 1).getName());
-				}
-				if (i == 2) {
-					quiz.setTeam3(teams.get(m.getTeams().get(i) - 1).getName());
-				}
-			}
-			quizzes.add(quiz);
-		}
-
-		Iterator<Quiz> itr = quizzes.iterator();
-
+		p.findPossibilities(alreadyHappened);
+		List<Match> ms = p.getMs();
+		System.out.println("------------------------");
+		Iterator<Match> itr = ms.iterator();
 		while (itr.hasNext()) {
-			Quiz quiz = itr.next();
-			swapIdWithNames(quiz);
-			if (hasQuizzed(matches, quiz.getTeam1(), quiz.getTeam2()) || hasQuizzed(matches, quiz.getTeam1(), quiz.getTeam2()) || hasQuizzed(matches, quiz.getTeam2(), quiz.getTeam2())) {
+			Match m = itr.next();
+			if (m.getRow() == -1) {
 				itr.remove();
 			}
 		}
+		for (Match m : ms) {
+			Quiz quiz = new Quiz();
+			quiz.setTeam1(m.getTeam(0).getName());
+			quiz.setTeam2(m.getTeam(1).getName());
+			quiz.setTeam3(m.getTeam(2).getName());
+			quizzes.add(quiz);
+		}
 
+		boolean test = true;
 		return quizzes;
+
+	}
+
+	private void optimizeMeet(String id) {
+		List<Slot> morningQuizzing = new ArrayList<Slot>();
+		List<Slot> afternoonQuizzing = new ArrayList<Slot>();
+		for (QuizMeet qm : schedules.getSchedule().get(0).getQuizMeet()) {
+			if (qm.getId().equals(id)) {
+				for (int i = 0; i < 7; i++) {
+					morningQuizzing.add(qm.getSlot().get(i));
+				}
+				sortSlots(morningQuizzing, 6);
+				for (int i = 6; i < 14; i++) {
+					afternoonQuizzing.add(qm.getSlot().get(i));
+				}
+				sortSlots(afternoonQuizzing, 6);
+			}
+		}
+
+		List<Team> teams = new ArrayList<Team>();
+		for (TeamHelper helper : teamValues.values()) {
+			if (!"".equals(helper.getTeamName())) {
+				teams.add(helper.getTeamObject());
+			}
+		}
+
+		// trips in the morning
+		HashMap<Team, List<String>> trips = new HashMap<Team, List<String>>();
+		for (Team team : teams) {
+			for (int i = 2; i < morningQuizzing.size(); i++) {
+				if (inSlot(morningQuizzing.get(i), team.getName())) {
+					if (inSlot(morningQuizzing.get(i - 1), team.getName())) {
+						if (inSlot(morningQuizzing.get(i - 2), team.getName())) {
+							List<String> slots = new ArrayList<String>();
+							for (int l = 0; l < morningQuizzing.get(i).getQuiz().size(); l++) {
+								if (morningQuizzing.get(i).getQuiz().get(l).getTeam1() == null)
+									continue;
+								if (morningQuizzing.get(i).getQuiz().get(l).getTeam1().equals(team.getName()) || morningQuizzing.get(i).getQuiz().get(l).getTeam2().equals(team.getName()) || morningQuizzing.get(i).getQuiz().get(l).getTeam3().equals(team.getName())) {
+									slots.add(i + ":" + l);
+								}
+							}
+							for (int l = 0; l < morningQuizzing.get(i - 1).getQuiz().size(); l++) {
+								if (morningQuizzing.get(i - 1).getQuiz().get(l).getTeam1() == null)
+									continue;
+								if (morningQuizzing.get(i - 1).getQuiz().get(l).getTeam1().equals(team.getName()) || morningQuizzing.get(i - 1).getQuiz().get(l).getTeam2().equals(team.getName()) || morningQuizzing.get(i - 1).getQuiz().get(l).getTeam3().equals(team.getName())) {
+									slots.add((i - 1) + ":" + l);
+								}
+							}
+							for (int l = 0; l < morningQuizzing.get(i - 2).getQuiz().size(); l++) {
+								if (morningQuizzing.get(i - 2).getQuiz().get(l).getTeam1() == null)
+									continue;
+								if (morningQuizzing.get(i - 2).getQuiz().get(l).getTeam1().equals(team.getName()) || morningQuizzing.get(i - 2).getQuiz().get(l).getTeam2().equals(team.getName()) || morningQuizzing.get(i - 2).getQuiz().get(l).getTeam3().equals(team.getName())) {
+									slots.add((i - 2) + ":" + l);
+								}
+							}
+							trips.put(team, slots);
+						}
+					}
+				}
+			}
+		}
+		tripLoop:for (Team team : trips.keySet()) {
+			for (int i = 0; i < morningQuizzing.size(); i++) {
+				if (inSlot(morningQuizzing.get(i), team.getName())) {
+					// This is a slot containing a team with a triple quiz
+					int quizNum = 0;
+					Quiz quizToMove = null;
+					for (int k = 0; k < morningQuizzing.get(i).getQuiz().size(); k++) {
+						if (morningQuizzing.get(i).getQuiz().get(k).getTeam1() != null) {
+							if (morningQuizzing.get(i).getQuiz().get(k).getTeam1().equals(team.getName()) || morningQuizzing.get(i).getQuiz().get(k).getTeam2().equals(team.getName()) || morningQuizzing.get(i).getQuiz().get(k).getTeam3().equals(team.getName())) {
+								quizNum = k;
+								quizToMove = morningQuizzing.get(i).getQuiz().get(k);
+							}
+						}
+					}
+
+					// now looking for a slot that this team is not in.
+					for (int j = 0; j < morningQuizzing.size(); j++) {
+						for (String s : trips.get(team)) {
+							if (s.contains(j + ":"))
+							continue;
+						}
+						if (!inSlot(morningQuizzing.get(j), quizToMove)) {
+							if (morningQuizzing.get(j).getQuiz().size() < 6) {
+								morningQuizzing.get(j).getQuiz().add(quizToMove);
+								morningQuizzing.get(i).getQuiz().remove(quizNum);
+								System.out.println("MOVED A QUIZ TO A VACANT SPOT");
+								continue tripLoop;
+							}
+							
+							for (int q = 0; q < morningQuizzing.get(j).getQuiz().size(); q++) {
+								if (morningQuizzing.get(j).getQuiz().get(q).getTeam1() == null)
+										continue;
+								if (!inSlot(morningQuizzing.get(i), morningQuizzing.get(j).getQuiz().get(q))) {
+									//move trip quiz into new slot
+									morningQuizzing.get(j).getQuiz().add(quizToMove);
+									morningQuizzing.get(i).getQuiz().remove(quizNum);
+									
+									//move other quiz into trip slot
+									morningQuizzing.get(i).getQuiz().add(morningQuizzing.get(j).getQuiz().get(q));
+									morningQuizzing.get(j).getQuiz().remove(q);
+								
+									System.out.println("SWAPPED QUIZZES");
+									continue tripLoop;
+								}
+							}
+
+						}
+					}
+				}
+			}
+		}
+
+		checkForRepeatMatches();
+		System.out.println("Optimized");
+		addSchedule(schedules.getSchedule().get(0));
+		return;
+
+	}
+
+	private void checkForRepeatMatches() {
+		HashSet<String> matches = new HashSet<String>();
+		for (QuizMeet qm : schedules.getSchedule().get(0).getQuizMeet()) {
+			for (Slot slot : qm.getSlot()) {
+				for (Quiz q : slot.getQuiz()) {
+					if (q.getTeam1() != null) {
+						if (hasQuizzed(matches, q.getTeam1(), q.getTeam2()) || hasQuizzed(matches, q.getTeam1(), q.getTeam3()) || hasQuizzed(matches, q.getTeam2(), q.getTeam3())) {
+							System.out.println("TEST" + q.getTeam1() + ":" + q.getTeam2() + ":" + q.getTeam3());
+						}
+						matches.add(q.getTeam1() + ":" + q.getTeam2());
+						matches.add(q.getTeam1() + ":" + q.getTeam3());
+						matches.add(q.getTeam2() + ":" + q.getTeam3());
+
+					}
+				}
+			}
+		}
 	}
 }
