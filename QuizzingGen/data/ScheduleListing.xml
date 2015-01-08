@@ -120,8 +120,9 @@
                 <quiz/>
                 <quiz team1="Bramalea" team2="West London 1" team3="West London 3"/>
                 <quiz team1="Burlington 2" team2="Gateway" team3="Erin Village 3"/>
+				<quiz team1="Erin Village 2" team2="Gregory Drive 2" team3="Carmel 1"/>
                 <quiz team1="Carmel 3" team2="Mississauga 1" team3="Hazelglen 1"/>
-                <quiz team1="Erin Village 2" team2="Gregory Drive 2" team3="Carmel 1"/>
+ 
                 <quiz team1="Burlington 3" team2="Sheridan Park 2" team3="Burlington 1"/>
             </slot>
             <slot start="10:20" end="10:40">
@@ -137,6 +138,7 @@
                 <quiz team1="Glengate 2" team2="Gregory Drive 1 " team3="West London 4"/>
                 <quiz team1="Erin Village 2" team2="Hazelglen 2" team3="Huntsville"/>
                 <quiz team1="Gregory Drive 4" team2="Tillsonburg 1" team3="Erin Village 1"/>
+				<quiz/>
                 <quiz team1="Mississauga 1" team2="Burlington 2" team3="Mississauga 4"/>
             </slot>
             <slot start="11:00" end="11:20">
@@ -156,10 +158,11 @@
             </slot>
             <slot start="11:40" end="12:00">
                 <quiz team1="West London 3" team2="Mississauga 4" team3="Erin Village 1"/>
-				<quiz/>
-                <quiz team1="Sheridan Park 3" team2="Gregory Drive 1 " team3="Carmel 2"/>
+				<quiz team1="Gregory Drive 2" team2="West London 4" team3="Glengate 1"/>
+                            <quiz/>    
                 <quiz team1="Erin Village 3" team2="Bramalea" team3="Gregory Drive 6"/>
-                <quiz team1="Gregory Drive 2" team2="West London 4" team3="Glengate 1"/>
+
+				<quiz team1="Sheridan Park 3" team2="Gregory Drive 1 " team3="Carmel 2"/>
                 <quiz team1="Gateway" team2="Tillsonburg 1" team3="Gregory Drive 5"/>
                 
             </slot>
@@ -193,11 +196,13 @@
                 <quiz team1="Sheridan Park 1" team2="Burlington 2" team3="Huntsville"/>
             </slot>
             <slot start="2:30" end="2:50">
+			<quiz/>
                 <quiz team1="Burlington 3" team2="Carmel 1" team3="Erin Village 3"/>
                 <quiz team1="Erin Village 2" team2="Burlington 2" team3="Tillsonburg 3"/>
                 <quiz team1="Mississauga 1" team2="Mississauga 2" team3="West London 3"/>
                 <quiz team1="Gregory Drive 3" team2="Sheridan Park 3" team3="West London 2"/>
                 <quiz team1="West London 4" team2="Hazelglen 1" team3="Erin Village 1"/>
+				<quiz/>
             </slot>
             <slot start="2:50" end="3:10">
                 <quiz team1="Mississauga 1" team2="Hazelglen 2" team3="Gateway"/>
@@ -224,12 +229,12 @@
                 <quiz team1="West London 1" team2="Carmel 1" team3="Burlington 2"/>
             </slot>
             <meet id="2" location="Mississauga" date="Jan 10 2015" start="10:00" end="15:30">
-                <room id="dd9c1942-e681-4db1-842c-7534aa70a2ce" name="Room A " quizmasters="John M,Joy,Amy T"/>
+                <room id="dd9c1942-e681-4db1-842c-7534aa70a2ce" name="Room A " quizmasters="John M,Amy T."/>
                 <room id="6af5e919-4799-4d5b-8d63-d8812e298393" name="Room B " quizmasters="Steve D,Jason B,Jon B"/>
-                <room id="07da48dd-24da-4e8b-bf80-f4364c80b980" name="Room C" quizmasters="Lyn,Audrey,Stephanie  "/>
+                <room id="07da48dd-24da-4e8b-bf80-f4364c80b980" name="Room C" quizmasters="Amy K,Shailene,Tara"/>
                 <room id="eadfa967-395c-48b6-8670-f5d4668e0f71" name="Room D" quizmasters="Josh D,Emily B,Josiah  "/>
-                <room id="a41d63cc-34fa-4795-b154-621fd0b374ca" name="Room E" quizmasters="Amy K,Shailene,Tara     "/>
-                <room id="7a298a3d-fed0-451d-ac3a-67dbd2748951" name="Room F" quizmasters="Jackie,Jess,Dave D"/>
+                <room id="a41d63cc-34fa-4795-b154-621fd0b374ca" name="Room E" quizmasters="Stephanie,Joy,Chris"/>
+                <room id="7a298a3d-fed0-451d-ac3a-67dbd2748951" name="Room F" quizmasters="Jackie,Jess,Dave"/>
             </meet>
         </quizMeet>
     </schedule>
