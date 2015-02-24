@@ -120,8 +120,8 @@
                 <quiz/>
                 <quiz team1="Bramalea" team2="West London 1" team3="West London 3"/>
                 <quiz team1="Burlington 2" team2="Gateway" team3="Erin Village 3"/>
-				<quiz team1="Erin Village 2" team2="Gregory Drive 2" team3="Carmel 1"/>
-                <quiz team1="Carmel 3" team2="Hazelglen 1" team3="Mississauga 1"/>
+                <quiz team1="Erin Village 2" team2="Gregory Drive 2" team3="Carmel 1"/>
+                <quiz team1="Carmel 3" team2="Mississauga 1" team3="Hazelglen 1"/>
                 <quiz team1="Burlington 3" team2="Sheridan Park 2" team3="Burlington 1"/>
             </slot>
             <slot start="10:20" end="10:40">
@@ -129,46 +129,44 @@
                 <quiz team1="Erin Village 1" team2="Glengate 2" team3="Gregory Drive 3"/>
                 <quiz team1="Glengate 1" team2="Mississauga 3" team3="Gregory Drive 5"/>
                 <quiz team1="Gregory Drive 6" team2="Carmel 1" team3="Sheridan Park 2"/>
-                <quiz team1="Sheridan Park 1" team2="Erin Village 3" team3="Carmel 2"/>
-                <quiz team1="Tillsonburg 3" team2="West London 2" team3="Hazelglen 1"/>
+                <quiz team1="Erin Village 3" team2="Sheridan Park 1" team3="Carmel 2"/>
+                <quiz team1="West London 2" team2="Tillsonburg 3" team3="Hazelglen 1"/>
             </slot>
             <slot start="10:40" end="11:00">
                 <quiz team1="Gregory Drive 5" team2="Carmel 3" team3="Sheridan Park 3"/>
                 <quiz team1="Glengate 2" team2="Gregory Drive 1 " team3="West London 4"/>
-                <quiz team1="Huntsville" team2="Hazelglen 2" team3="Erin Village 2"/>
+                <quiz team1="Erin Village 2" team2="Hazelglen 2" team3="Huntsville"/>
                 <quiz team1="Gregory Drive 4" team2="Tillsonburg 1" team3="Erin Village 1"/>
-				<quiz/>
+                <quiz/>
                 <quiz team1="Mississauga 1" team2="Burlington 2" team3="Mississauga 4"/>
             </slot>
             <slot start="11:00" end="11:20">
-                <quiz team1="Mississauga 3" team2="West London 4" team3="West London 3"/>
+                <quiz team1="West London 4" team2="Mississauga 3" team3="West London 3"/>
                 <quiz team1="Tillsonburg 3" team2="Huntsville" team3="Glengate 1"/>
                 <quiz team1="Burlington 1" team2="Gregory Drive 3" team3="Carmel 3"/>
-                <quiz team1="Mississauga 2" team2="Carmel 4" team3="Hazelglen 1"/>
+                <quiz team1="Carmel 4" team2="Mississauga 2" team3="Hazelglen 1"/>
                 <quiz team1="West London 2" team2="Tillsonburg 2" team3="Burlington 2"/>
                 <quiz team1="Hazelglen 2" team2="Sheridan Park 1" team3="Burlington 3"/>
             </slot>
             <slot start="11:20" end="11:40">
                 <quiz team1="Carmel 2" team2="Tillsonburg 2" team3="Burlington 1"/>
-				<quiz/>
-                <quiz team1="Tillsonburg 1" team2="Sheridan Park 1" team3="Gregory Drive 6"/>
+                <quiz/>
+                <quiz team1="Gregory Drive 6" team2="Sheridan Park 1" team3="Tillsonburg 1"/>
                 <quiz team1="Bramalea" team2="Tillsonburg 3" team3="Carmel 4"/>
-				<quiz team1="Glengate 2" team2="Mississauga 2" team3="West London 1"/>
+                <quiz team1="Glengate 2" team2="Mississauga 2" team3="West London 1"/>
             </slot>
             <slot start="11:40" end="12:00">
                 <quiz team1="West London 3" team2="Mississauga 4" team3="Erin Village 1"/>
-				<quiz team1="Gregory Drive 2" team2="West London 4" team3="Glengate 1"/>
-                            <quiz/>    
+                <quiz team1="Gregory Drive 2" team2="West London 4" team3="Glengate 1"/>
+                <quiz/>
                 <quiz team1="Erin Village 3" team2="Bramalea" team3="Gregory Drive 6"/>
-
-				<quiz team1="Sheridan Park 3" team2="Gregory Drive 1 " team3="Carmel 2"/>
+                <quiz team1="Sheridan Park 3" team2="Gregory Drive 1 " team3="Carmel 2"/>
                 <quiz team1="Gateway" team2="Tillsonburg 1" team3="Gregory Drive 5"/>
-                
             </slot>
             <slot start="12:00" end="12:20">
                 <quiz team1="Sheridan Park 2" team2="Gregory Drive 4" team3="West London 2"/>
                 <quiz team1="Gregory Drive 3" team2="Mississauga 3" team3="Huntsville"/>
-                <quiz team1="Hazelglen 2" team2="Carmel 4" team3="Carmel 1"/>
+                <quiz team1="Hazelglen 2" team2="Carmel 1" team3="Carmel 4"/>
                 <quiz team1="Burlington 3" team2="Erin Village 2" team3="Mississauga 1"/>
                 <quiz team1="Gregory Drive 2" team2="Gateway" team3="Gregory Drive 1 "/>
                 <quiz team1="Tillsonburg 2" team2="West London 1" team3="Mississauga 4"/>
@@ -182,7 +180,7 @@
                 <quiz team1="Glengate 1" team2="Mississauga 1" team3="Erin Village 1"/>
             </slot>
             <slot start="1:50" end="2:10">
-                <quiz team1="Bramalea" team2="Burlington 3" team3="Tillsonburg 2"/>
+                <quiz team1="Bramalea" team2="Tillsonburg 2" team3="Burlington 3"/>
                 <quiz team1="Carmel 4" team2="Erin Village 2" team3="Mississauga 4"/>
                 <quiz team1="Glengate 2" team2="Gregory Drive 4" team3="Sheridan Park 1"/>
                 <quiz team1="West London 3" team2="Tillsonburg 3" team3="Erin Village 3"/>
@@ -195,17 +193,17 @@
                 <quiz team1="Sheridan Park 1" team2="Burlington 2" team3="Huntsville"/>
             </slot>
             <slot start="2:30" end="2:50">
-			    <quiz team1="Erin Village 2" team2="Burlington 2" team3="Tillsonburg 3"/>
+                <quiz/>
                 <quiz team1="Burlington 3" team2="Carmel 1" team3="Erin Village 3"/>
-				<quiz/>
+                <quiz team1="Erin Village 2" team2="Burlington 2" team3="Tillsonburg 3"/>
                 <quiz team1="Mississauga 1" team2="Mississauga 2" team3="West London 3"/>
                 <quiz team1="Gregory Drive 3" team2="Sheridan Park 3" team3="West London 2"/>
                 <quiz team1="West London 4" team2="Hazelglen 1" team3="Erin Village 1"/>
-				<quiz/>
+                <quiz/>
             </slot>
             <slot start="2:50" end="3:10">
                 <quiz team1="Mississauga 1" team2="Hazelglen 2" team3="Gateway"/>
-                <quiz team1="Mississauga 2" team2="Erin Village 2" team3="Burlington 1"/>
+                <quiz team1="Erin Village 2" team2="Mississauga 2" team3="Burlington 1"/>
                 <quiz team1="Burlington 3" team2="Glengate 1" team3="Tillsonburg 1"/>
                 <quiz team1="Erin Village 3" team2="Glengate 2" team3="Carmel 3"/>
                 <quiz team1="Gregory Drive 6" team2="Gregory Drive 2" team3="Sheridan Park 3"/>
@@ -217,14 +215,14 @@
                 <quiz team1="Hazelglen 1" team2="Burlington 1" team3="Huntsville"/>
                 <quiz team1="Carmel 2" team2="Glengate 1" team3="Carmel 4"/>
                 <quiz team1="Gregory Drive 5" team2="Gregory Drive 4" team3="Bramalea"/>
-                <quiz team1="Erin Village 1" team2="Mississauga 3" team3="Gateway"/>
+                <quiz team1="Erin Village 1" team2="Gateway" team3="Mississauga 3"/>
             </slot>
             <slot start="3:30" end="3:50">
                 <quiz team1="Hazelglen 1" team2="Tillsonburg 2" team3="Sheridan Park 1"/>
                 <quiz team1="West London 3" team2="Gregory Drive 2" team3="Gregory Drive 4"/>
                 <quiz team1="Carmel 3" team2="Bramalea" team3="West London 2"/>
-                <quiz team1="Huntsville" team2="Mississauga 4" team3="Tillsonburg 1"/>
-                <quiz team1="Sheridan Park 2" team2="Gregory Drive 3" team3="West London 4"/>
+                <quiz team1="Huntsville" team2="Tillsonburg 1" team3="Mississauga 4"/>
+                <quiz team1="West London 4" team2="Gregory Drive 3" team3="Sheridan Park 2"/>
                 <quiz team1="West London 1" team2="Carmel 1" team3="Burlington 2"/>
             </slot>
             <meet id="2" location="Mississauga" date="Jan 10 2015" start="10:00" end="15:30">
@@ -234,6 +232,119 @@
                 <room id="eadfa967-395c-48b6-8670-f5d4668e0f71" name="Room D" quizmasters="Josh D,Emily B,Josiah  "/>
                 <room id="a41d63cc-34fa-4795-b154-621fd0b374ca" name="Room E" quizmasters="Stephanie,Joy,Chris"/>
                 <room id="7a298a3d-fed0-451d-ac3a-67dbd2748951" name="Room F" quizmasters="Jackie,Jess,Dave"/>
+            </meet>
+        </quizMeet>
+        <quizMeet id="3">
+            <slot start="10:00" end="10:20">
+                <quiz/>
+                <quiz team1="West London 1" team2="Erin Village 3" team3="West London 4"/>
+                <quiz team1="Carmel 3" team2="Tillsonburg 2" team3="Glengate 1"/>
+                <quiz team1="Burlington 3" team2="Tillsonburg 1" team3="West London 3"/>
+                <quiz team1="Gregory Drive 6" team2="Hazelglen 2" team3="Mississauga 2"/>
+                <quiz team1="Gregory Drive 2" team2="Erin Village 1" team3="Bramalea"/>
+            </slot>
+            <slot start="10:20" end="10:40">
+                <quiz team1="Sheridan Park 1" team2="Mississauga 1" team3="West London 1"/>
+                <quiz team1="Glengate 1" team2="Sheridan Park 3" team3="Carmel 1"/>
+                <quiz team1="Burlington 2" team2="Gregory Drive 4" team3="Burlington 1"/>
+                <quiz team1="Glengate 2" team2="Carmel 2" team3="Tillsonburg 3"/>
+                <quiz team1="Erin Village 2" team2="Sheridan Park 2" team3="Bramalea"/>
+            </slot>
+            <slot start="10:40" end="11:00">
+                <quiz team1="Carmel 4" team2="Erin Village 3" team3="Tillsonburg 2"/>
+                <quiz team1="Mississauga 3" team2="Gateway" team3="West London 2"/>
+                <quiz team1="Mississauga 4" team2="Carmel 3" team3="Gregory Drive 2"/>
+                <quiz team1="Gregory Drive 1 " team2="Gregory Drive 3" team3="Burlington 1"/>
+                <quiz team1="Burlington 2" team2="Gregory Drive 5" team3="Sheridan Park 1"/>
+            </slot>
+            <slot start="11:00" end="11:20">
+                <quiz team1="Huntsville" team2="Bramalea" team3="Carmel 1"/>
+                <quiz team1="Sheridan Park 3" team2="Sheridan Park 2" team3="West London 4"/>
+                <quiz team1="Mississauga 1" team2="West London 1" team3="Gregory Drive 4"/>
+                <quiz team1="Tillsonburg 1" team2="Hazelglen 2" team3="Hazelglen 1"/>
+                <quiz team1="Mississauga 4" team2="Mississauga 2" team3="Gateway"/>
+            </slot>
+            <slot start="11:20" end="11:40">
+                <quiz team1="Sheridan Park 2" team2="West London 2" team3="Mississauga 1"/>
+                <quiz team1="Carmel 2" team2="Gregory Drive 5" team3="Gregory Drive 2"/>
+                <quiz team1="West London 3" team2="Sheridan Park 3" team3="Gregory Drive 3"/>
+                <quiz team1="Tillsonburg 3" team2="Mississauga 2" team3="Carmel 1"/>
+                <quiz team1="Hazelglen 1" team2="Carmel 3" team3="Mississauga 3"/>
+                <quiz team1="Gregory Drive 1 " team2="Erin Village 2" team3="Tillsonburg 1"/>
+            </slot>
+            <slot start="11:40" end="12:00">
+                <quiz team1="Erin Village 1" team2="Gregory Drive 3" team3="Carmel 4"/>
+                <quiz team1="Tillsonburg 3" team2="Gregory Drive 6" team3="Carmel 2"/>
+                <quiz team1="Gregory Drive 1 " team2="West London 2" team3="Burlington 3"/>
+                <quiz team1="Tillsonburg 2" team2="Gateway" team3="Glengate 2"/>
+                <quiz team1="Burlington 2" team2="West London 3" team3="Huntsville"/>
+                <quiz team1="Mississauga 3" team2="Sheridan Park 1" team3="Burlington 1"/>
+            </slot>
+            <slot start="12:00" end="12:20">
+                <quiz team1="Burlington 3" team2="Gregory Drive 6" team3="Carmel 4"/>
+                <quiz team1="Huntsville" team2="Erin Village 1" team3="Glengate 2"/>
+                <quiz team1="Erin Village 3" team2="Gregory Drive 4" team3="Mississauga 4"/>
+                <quiz team1="Hazelglen 2" team2="Gregory Drive 5" team3="West London 4"/>
+                <quiz team1="Glengate 1" team2="Erin Village 2" team3="Hazelglen 1"/>
+            </slot>
+            <slot start="13:20" end="13:40">
+                <quiz team1="West London 1" team2="Carmel 1" team3="Gateway"/>
+                <quiz team1="Gregory Drive 5" team2="Mississauga 4" team3="Carmel 4"/>
+                <quiz team1="Tillsonburg 2" team2="Erin Village 2" team3="Gregory Drive 6"/>
+                <quiz team1="Carmel 2" team2="Mississauga 2" team3="West London 3"/>
+                <quiz team1="Gregory Drive 2" team2="Gregory Drive 4" team3="Tillsonburg 3"/>
+                <quiz team1="Hazelglen 2" team2="Gregory Drive 1 " team3="Hazelglen 1"/>
+            </slot>
+            <slot start="13:40" end="14:00">
+                <quiz team1="Burlington 1" team2="Glengate 1" team3="Mississauga 3"/>
+                <quiz team1="Burlington 3" team2="Carmel 3" team3="Glengate 2"/>
+                <quiz team1="Erin Village 1" team2="West London 4" team3="Burlington 2"/>
+                <quiz team1="Erin Village 3" team2="Sheridan Park 3" team3="Huntsville"/>
+                <quiz team1="Mississauga 1" team2="Bramalea" team3="Sheridan Park 2"/>
+                <quiz team1="Gregory Drive 4" team2="Erin Village 2" team3="Gregory Drive 3"/>
+            </slot>
+            <slot start="14:00" end="14:20">
+                <quiz team1="Gregory Drive 6" team2="Gregory Drive 5" team3="Hazelglen 1"/>
+                <quiz team1="Carmel 1" team2="West London 3" team3="Glengate 2"/>
+                <quiz team1="Huntsville" team2="Gregory Drive 2" team3="Sheridan Park 2"/>
+                <quiz team1="Tillsonburg 1" team2="West London 4" team3="Burlington 3"/>
+                <quiz team1="Gateway" team2="West London 2" team3="Carmel 4"/>
+                <quiz team1="Carmel 2" team2="Burlington 2" team3="Mississauga 3"/>
+            </slot>
+            <slot start="14:20" end="14:40">
+                <quiz team1="Tillsonburg 2" team2="Tillsonburg 3" team3="Glengate 1"/>
+                <quiz team1="Erin Village 3" team2="Bramalea" team3="Gregory Drive 1 "/>
+                <quiz team1="Burlington 1" team2="Mississauga 4" team3="Mississauga 2"/>
+                <quiz team1="Erin Village 1" team2="West London 1" team3="Hazelglen 2"/>
+                <quiz team1="Sheridan Park 1" team2="Tillsonburg 1" team3="West London 2"/>
+            </slot>
+            <slot start="14:40" end="15:00">
+                <quiz team1="Sheridan Park 1" team2="Sheridan Park 2" team3="Tillsonburg 2"/>
+                <quiz team1="Hazelglen 1" team2="Burlington 3" team3="Sheridan Park 3"/>
+                <quiz team1="Gregory Drive 3" team2="Gregory Drive 5" team3="Mississauga 2"/>
+                <quiz team1="Carmel 2" team2="Gregory Drive 1 " team3="Mississauga 1"/>
+                <quiz team1="Glengate 1" team2="Carmel 3" team3="Gregory Drive 4"/>
+                <quiz team1="Erin Village 2" team2="Erin Village 3" team3="Carmel 4"/>
+            </slot>
+            <slot start="15:00" end="15:20">
+                <quiz team1="Gregory Drive 3" team2="Bramalea" team3="Hazelglen 2"/>
+                <quiz team1="Glengate 2" team2="Mississauga 3" team3="Tillsonburg 1"/>
+                <quiz team1="Burlington 1" team2="Gateway" team3="Gregory Drive 2"/>
+                <quiz team1="Huntsville" team2="Mississauga 1" team3="West London 1"/>
+                <quiz team1="Gregory Drive 6" team2="West London 4" team3="West London 2"/>
+                <quiz team1="Erin Village 1" team2="Carmel 1" team3="Mississauga 4"/>
+            </slot>
+            <slot start="15:20" end="15:40">
+                <quiz team1="Burlington 2" team2="West London 3" team3="Tillsonburg 3"/>
+                <quiz team1="Sheridan Park 3" team2="Sheridan Park 1" team3="Carmel 3"/>
+            </slot>
+            <meet id="3" location="Mississauga" date="Mar 7th" start="10:00" end="15:30">
+                <room id="4da942fe-f52f-47fb-ab4c-193c566aed50" name="Room A" quizmasters="Jill, Jack"/>
+                <room id="8d6afbe8-02d2-4824-b780-0bed4fdc7822" name="Room B" quizmasters="Jack, Jill"/>
+                <room id="0c483e06-f920-4e8a-82c6-9740847a5e74" name="Room C" quizmasters="Julian, Pat"/>
+                <room id="9e53f8ee-2079-45cc-a39d-6d9b1a441c8a" name="Room D" quizmasters="Gold, Fish"/>
+                <room id="68198bc2-8c76-4e65-9cf9-f5d5886dddf2" name="Room E" quizmasters="Hoard, SHore"/>
+                <room id="30060ee6-7ff5-4745-9bb5-360a3fd14833" name="Room F" quizmasters="Taylor, Swift"/>
             </meet>
         </quizMeet>
     </schedule>
